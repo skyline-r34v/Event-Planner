@@ -1,0 +1,13 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  background-color: #070627;
+}
+
+.container {
+  padding: 20px;
+}
+
+h1, h2 {
+  color: #1c67a0;
+}

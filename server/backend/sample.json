@@ -1,0 +1,45 @@
+{
+    "projectName": "my-website",
+    "structure": {
+        "root": [
+            "client/",
+            "server/",
+            "package.json",
+            "README.md"
+        ],
+        "client": {
+            "src": [
+                "App.js",
+                "index.js",
+                "components/",
+                "pages/",
+                "App.css"
+            ],
+            "public": [
+                "index.html"
+            ],
+            "package.json": true
+        },
+        "server": {
+            "models": [
+                "User.js"
+            ],
+            "routes": [
+                "userRoutes.js"
+            ],
+            "controllers": [
+                "userController.js"
+            ],
+            "config": [
+                "db.js"
+            ],
+            "server.js": true,
+            "package.json": true
+        }
+    },
+    "codeSamples": {
+        "client/src/App.js": "// App.js\nimport React from 'react';\nimport './App.css';\n\nfunction App() {\n  return (\n    <div className=\"App\">\n      <h1>Welcome to My Website</h1>\n    </div>\n  );\n}\n\nexport default App;",
+        "server/server.js": "// server.js\nconst express = require('express');\nconst mongoose = require('mongoose');\nconst app = express();\nconst PORT = process.env.PORT || 5000;\n\napp.use(express.json());\n\n// Sample route\napp.get('/', (req, res) => {\n  res.send('API Running');\n});\n\napp.listen(PORT, () => console.log(`Server started on port ${PORT}`));",
+        "server/config/db.js": "// db.js\nconst mongoose = require('mongoose');\nconst connectDB = async () => {\n  try {\n    await mongoose.connect(process.env.MONGO_URI);\n    console.log('MongoDB connected');\n  } catch (error) {\n    console.error(error.message);\n    process.exit(1);\n  }\n};\n\nmodule.exports = connectDB;"
+    }
+}
