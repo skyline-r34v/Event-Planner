@@ -1,1 +1,1 @@
-# CloudMorph-AI
+# Event Planner AI
