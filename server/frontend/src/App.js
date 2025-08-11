@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import Form from './pages/Form'
+import Scrap from './pages/Scrap'
 import './App.css';
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/form" element={<Form />} />
+          <Route path="/scraping" element={<Scrap />}/>
         </Routes>
       </div>
     </div>
