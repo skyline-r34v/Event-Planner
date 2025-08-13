@@ -132,9 +132,13 @@ def scrape_google_maps(keywords):
     print(f"\n✅ Scraped total {len(results)} places across all keywords. Data saved to google_maps_data.json")
 
 
-# Example usage — change cities to get more results
-# cities = ["Mumbai", "Pune", "Nagpur", "Nashik", "Aurangabad"]
-# keywords_list = [f"wedding hall in {city}" for city in cities]
-keywords_list = ["wedding hall in mumbai"]
 
-scrape_google_maps(keywords_list)
+if __name__ == "__main__":
+    start_time = time.time()
+# Example usage — change cities to get more results
+    cities = ["Mumbai", "Pune", "Nagpur", "Nashik", "Aurangabad"]
+    keywords_list = [f"wedding hall in {city}" for city in cities]
+#keywords_list = ["wedding hall in mumbai"]
+
+    scrape_google_maps(keywords_list)
+    end_time = time.time()
