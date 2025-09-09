@@ -1,25 +1,36 @@
-import express from 'express';
-import dotenv from 'dotenv';
-import cors from 'cors';
-import morgan from 'morgan'
+const express = require('express');
+const dotenv = require('dotenv');
+const connectDB = require('./config/db');
+const errorHandler = require('./middlewares/errorHandler');
 
-//Routes
-import CodeSampleRouter from './routes/codesample.js'
-import CLientInputRouter from './routes/clientinput.js'
+// Load environment variables
+dotenv.config();
 
+// Connect DB
+connectDB();
+
+// Initialize app
 const app = express();
 
-app.use(cors());
+// Middleware
 app.use(express.json());
-app.use(morgan('dev'))
-dotenv.config();
+
+// Routes
+app.use('/api/users', require('./routes/userRoutes'));
+app.use('/api/venues', require('./routes/venueRouter'));
+app.use('/api/bookmarks', require('./routes/bookmarkRoutes'));
+app.use('/api/auditlogs', require('./routes/auditRoutes'));
+
+// Health check route
+app.get('/', (req, res) => {
+  res.send('✅ API is running...');
+});
+
+// Error handler (should be last)
+app.use(errorHandler);
+
+// Start server
 const PORT = process.env.PORT || 5000;
-
-
-app.use('/test', CodeSampleRouter);
-app.use('/submit', CLientInputRouter);
-
-
 app.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}`);
+  console.log(`🚀 Server running on port ${PORT}`);
 });
